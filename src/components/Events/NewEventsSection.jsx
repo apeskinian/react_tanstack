@@ -8,7 +8,9 @@ import { fetchEvents } from '../../util/http.js';
 export default function NewEventsSection() {
   const { data, isPending, isError, error } = useQuery({
     queryKey: ['events'],
-    queryFn: fetchEvents
+    queryFn: fetchEvents,
+    staleTime: 5000, // the delay until refetching (default = 0)
+    //gcTime: 30000 // the garbage collection delay, how long data is kept
   });
 
   let content;
